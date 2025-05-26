@@ -1,12 +1,58 @@
-Food Delivery Time Prediction - Project Report
+Food Delivery Time Prediction - Project Summary Report
+------------------------------------------------------
 
-This project uses a dataset to predict food delivery times based on multiple input features including traffic conditions, weather, and more.
+Objective:
+-----------
+This project aims to predict the food delivery time based on several input features such as:
+- Distance between the restaurant and the customer
+- Weather conditions
+- Traffic levels
+- Type of delivery vehicle
+- Delivery person experience
+- Order cost
 
-Phases:
-1. Data Preprocessing
-2. Exploratory Data Analysis
-3. Feature Engineering
-4. Linear Regression Model
-5. Logistic Regression Model
-6. Evaluation and Comparison
-7. Actionable Insights
+The project involves both regression (predicting delivery time) and classification (predicting if the delivery is fast or delayed).
+
+Dataset Overview:
+------------------
+The dataset includes both numerical and categorical features. The main target variable for regression is "Delivery_Time". 
+For classification, a binary column "Delayed" was created based on whether the delivery time is above the median.
+
+Data Preprocessing:
+---------------------
+- Missing values were handled using median imputation.
+- Categorical variables were encoded using LabelEncoder.
+- Numeric features were standardized using StandardScaler.
+
+Exploratory Data Analysis:
+---------------------------
+- Correlation matrix was used to identify relationships between features.
+- Boxplots were used to detect outliers.
+- Traffic and distance were found to be strong predictors of delivery time.
+
+Modeling:
+---------
+1. Linear Regression:
+   - Used to predict actual delivery time.
+   - Evaluated using Mean Absolute Error, Mean Squared Error, and R-squared metrics.
+
+2. Logistic Regression:
+   - Used to classify deliveries as "fast" or "delayed".
+   - Evaluated using Accuracy, Precision, Recall, F1 Score, Confusion Matrix, and ROC Curve.
+
+Insights:
+---------
+- Delivery time increases significantly with poor traffic and weather conditions.
+- High traffic periods can be targeted for better route optimization.
+- Training delivery staff and matching agents based on proximity can improve efficiency.
+
+Files Included:
+---------------
+- Food_Delivery_Time_Prediction.ipynb : The Jupyter Notebook with all the code and results.
+- Food_Delivery_Time_Prediction.csv   : The dataset used.
+- README.md                          : Overview of the project.
+- This report                        : Summary of the entire assignment.
+
+Conclusion:
+------------
+This project demonstrates how machine learning models can help optimize food delivery operations and enhance customer satisfaction by predicting delivery times more accurately.
