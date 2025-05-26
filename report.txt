@@ -1,0 +1,12 @@
+Food Delivery Time Prediction - Project Report
+
+This project uses a dataset to predict food delivery times based on multiple input features including traffic conditions, weather, and more.
+
+Phases:
+1. Data Preprocessing
+2. Exploratory Data Analysis
+3. Feature Engineering
+4. Linear Regression Model
+5. Logistic Regression Model
+6. Evaluation and Comparison
+7. Actionable Insights
