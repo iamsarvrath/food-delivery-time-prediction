@@ -1,4 +1,10 @@
 Food Delivery Time Prediction - Project Summary Report
 ------------------------------------------------------
 
-This project focused on predicting food delivery time using machine learning by applying a full pipeline that included data cleaning, feature encoding, scaling, visualization, and model development. Key findings showed that features like distance and order cost significantly influenced delivery time, with strong correlations observed during exploratory analysis. Two models were built: a linear regression model to predict continuous delivery times, which demonstrated reasonable performance based on metrics like Mean Squared Error (MSE), Mean Absolute Error (MAE), and R² score; and a logistic regression model to classify whether a delivery would be delayed, which achieved good accuracy, precision, recall, F1 score, and a strong ROC-AUC value. Insights from the analysis suggest that delays can be mitigated by optimizing delivery routes, planning better around peak traffic hours, and enhancing staff training. These recommendations aim to reduce delivery time variability and improve customer satisfaction through data-driven decision-making.
+This project aimed at forecasting food delivery time through the use of machine learning by implementing a complete pipeline involving data cleansing, feature 
+encoding, scaling, visualization, and model building. Of paramount importance was finding that factors such as distance and order price had a huge impact on delivery
+time, with high correlations being seen during exploratory analysis. Two models were constructed: a linear regression model to forecast continuous delivery times, 
+which performed reasonably well on the basis of the performance measures such as Mean Squared Error (MSE), Mean Absolute Error (MAE), and R² score; and a logistic
+regression model to predict whether a delivery would be delayed, which had good accuracy, precision, recall, F1 score, and a high ROC-AUC value. The analysis presents
+findings that delays can be avoided by streamlining delivery routes, planning in advance off-peak hours, and improving staff training. These suggestions are intended
+to minimize delivery time variability and enhance customer satisfaction through evidence-based decision-making.
