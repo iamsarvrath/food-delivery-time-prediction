@@ -1,11 +1,25 @@
-This project focused on forecasting food delivery times using machine learning by developing a comprehensive data analysis and modeling pipeline. The workflow began
-with data cleansing, where missing values and outliers were handled to ensure data quality. Next, categorical features were encoded using appropriate techniques such
-as one-hot encoding, and numerical features were standardized to improve model performance. Exploratory Data Analysis (EDA) revealed key insights, notably that
-variables such as the distance between the restaurant and customer, as well as the total order price, exhibited strong correlations with delivery time. These findings
-guided the model-building phase, where two predictive models were developed. A linear regression model was trained to predict continuous delivery times and evaluated
-using metrics like Mean Squared Error (MSE), Mean Absolute Error (MAE), and R² score, showing that the model could reasonably capture trends in delivery duration.
-Additionally, a logistic regression model was constructed to classify whether a delivery would be delayed or on time. This classification model demonstrated strong
-performance, achieving high accuracy, precision, recall, F1 score, and ROC-AUC, making it a reliable tool for delay prediction. Based on the analysis, actionable
-recommendations were proposed: optimizing delivery routes using real-time traffic data, scheduling more deliveries during off-peak hours, and enhancing delivery staff
-training. These strategies aim to reduce delivery time variability, minimize delays, and improve overall customer satisfaction by enabling data-driven operational 
-improvements.
+This project focused on forecasting food delivery times using machine learning by developing a comprehensive data analysis and modeling pipeline. The workflow began with data cleansing, where missing values and outliers were handled to ensure data quality. Next, categorical features were encoded using label encoding, and numerical features were standardized to improve model performance.
+Exploratory Data Analysis (EDA) revealed key insights—most notably, the distance between the restaurant and customer, and the total order price, exhibited strong correlations with delivery time. These findings guided the model-building phase, where two predictive models were developed:
+
+1. Linear Regression Model (for continuous prediction of delivery time):
+Mean Squared Error (MSE): 889.91
+Mean Absolute Error (MAE): 25.47
+R² Score: 0.038
+
+The linear regression model captured basic trends but showed limited predictive power, as indicated by the low R² value.
+
+2. Logistic Regression Model (to classify on-time vs. delayed deliveries):
+Accuracy: 52.5%
+Precision: 55.0%
+Recall: 52.4%
+F1 Score: 53.7%
+ROC-AUC: 61.7%
+
+This model showed moderate classification performance and serves as a starting point for delay prediction. Additional feature engineering or advanced models (like decision trees or gradient boosting) could improve accuracy.
+
+Recommendations:
+Optimize delivery routes using real-time traffic data.
+Schedule more deliveries during off-peak hours to reduce traffic-related delays.
+Enhance training for delivery staff to improve efficiency and consistency.
+These strategies aim to reduce delivery time variability, minimize delays, and improve overall customer satisfaction through data-driven improvements.
+
