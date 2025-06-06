@@ -1,0 +1,40 @@
+Food Delivery Time Prediction Report_v2
+
+Key Findings
+---------------
+- The dataset was cleaned by handling missing values and encoding categorical variables.
+- A custom Haversine distance feature was computed from restaurant and customer locations.
+- The target variable 'Delivery_status' was derived by comparing delivery times against the median.
+- Models were trained to classify whether a delivery would be faster or slower than the median time.
+
+Model Evaluation Summary
+----------------------------
+| Model               | Accuracy |
+|---------------------|----------|
+| Naive Bayes         | 0.475     |
+| K-Nearest Neighbors | 0.600     |
+| Decision Tree       | 0.525     |
+
+Detailed Observations:
+- Naive Bayes: Struggled to capture feature patterns, especially in this non-linear setting.
+- KNN (k=3): Performed best, suggesting that local neighborhood patterns help predict delivery times.
+- Decision Tree (max_depth=5, min_samples_split=2): Balanced bias-variance tradeoff but underperformed KNN.
+
+Actionable Recommendations
+------------------------------
+1. Feature Engineering Enhancements:
+   - Include derived time-based features (e.g., hour-of-day, weekday/weekend) from order time.
+   - Consider interaction features (e.g., distance × traffic condition).
+
+2. Model Improvements:
+   - Try ensemble models like Random Forest or XGBoost for potential accuracy boost.
+   - Consider using Logistic Regression as a baseline for interpretability.
+
+3. Data Balancing:
+   - Apply oversampling (SMOTE) or undersampling if class imbalance is more pronounced in larger datasets.
+
+4. Scalability:
+   - KNN performs best here, but may be computationally heavy on larger datasets. Consider approximate nearest neighbor methods if scaling.
+
+5. Evaluation Metrics:
+   - Accuracy alone may not suffice. Focus on F1-score, Recall, or ROC-AUC, especially if one class is more critical (e.g., delayed deliveries).
