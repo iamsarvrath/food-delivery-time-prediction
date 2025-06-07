@@ -1,0 +1,35 @@
+Report for Model-v3
+
+Model Comparison
+----------------
+Two approaches were used to analyze the food delivery dataset: Clustering (K-Means and Hierarchical) and a Neural Network classification model.
+
+1. K-Means Clustering was used to group deliveries based on similar characteristics. Using the Elbow Method, optimal clusters were determined. 
+   It showed that delayed deliveries tend to cluster in regions with poor traffic and adverse weather.
+
+2. Hierarchical Clustering helped visualize feature groupings through a dendrogram. It highlighted how closely traffic and weather conditions relate to delivery delays.
+
+3. A Neural Network was trained to predict whether a delivery would be 'Fast' or 'Delayed'. The model achieved the following metrics:
+   - Accuracy: 97.5%
+   - Precision: 95.45%
+   - Recall: 100%
+   - F1 Score: 97.67%
+
+Conclusion: While clustering methods provide insight into patterns and customer segments, the neural network model is more effective for precise delivery time prediction.
+
+Insights from K-Means and Hierarchical Clustering
+--------------------------------------------------
+- Traffic congestion and bad weather strongly correlate with delayed deliveries.
+- Certain times of day, especially rush hours, form clusters of delayed orders.
+- Orders with high priority or short distances typically appear in 'Fast' clusters.
+- Hierarchical clustering shows strong linkage between traffic and weather influence.
+
+Actionable Insights
+-------------------
+Based on both the clustering patterns and predictive power of the neural network, the following recommendations are made:
+
+1. Optimize routes by avoiding high-traffic and weather-prone zones based on historical data clustering.
+2. Introduce smart scheduling to shift non-urgent deliveries outside rush hours.
+3. Allocate additional delivery resources during peak hours and in areas with adverse weather forecasts.
+4. Integrate the neural network into live delivery systems to proactively alert customers and re-prioritize at-risk deliveries.
+5. Use cluster analysis to dynamically adjust delivery charges or offer incentives for flexible delivery slots.
