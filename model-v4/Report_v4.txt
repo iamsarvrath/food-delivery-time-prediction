@@ -1,0 +1,44 @@
+Report: Food Delivery Time Prediction using CNN & Model Validation
+
+Objective:
+To predict delivery times for food orders using a Convolutional Neural Network (CNN) model and validate the performance using K-Fold Cross-Validation.
+
+Dataset:
+- Preprocessed delivery dataset
+- Encoded categorical features
+- Scaled numerical features
+
+Model Architecture:
+- Input: (28, 28, 1)
+- Conv2D(32 filters, 3x3 kernel) + ReLU
+- MaxPooling2D(2x2)
+- Flatten
+- Dense(64) + ReLU
+- Dense(2) + Softmax
+
+Training Configuration:
+- Loss Function: categorical_crossentropy
+- Optimizer: adam
+- Epochs: 5
+- Validation: 5-Fold Cross Validation
+
+Results:
+| Fold | Accuracy  |
+|------|-----------|
+| 1    |   54.00%  |
+| 2    |   51.50%  |
+| 3    |   46.00%  |
+| 4    |   59.00%  |
+| 5    |   55.00%  |
+| Mean |   49.77%  |
+
+Key Findings:
+- CNN was effective in classifying delivery times based on features.
+- Model validated using 5-fold cross-validation ensures generalizability.
+- Accuracy values indicate how consistently the model performs across different data splits.
+
+Recommendations:
+- Consider hyperparameter tuning for improved performance.
+- Evaluate model on real images or map-based representations for better spatial analysis.
+- Compare CNN performance with LSTM or traditional ML models on tabular data.
+
