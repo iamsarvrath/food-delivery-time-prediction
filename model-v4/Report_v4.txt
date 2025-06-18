@@ -1,44 +1,49 @@
-Report: Food Delivery Time Prediction using CNN & Model Validation
+Report for Model-v4
 
-Objective:
-To predict delivery times for food orders using a Convolutional Neural Network (CNN) model and validate the performance using K-Fold Cross-Validation.
+Three primary phases were used to analyze and model the food delivery dataset: Data Preprocessing, CNN-based Neural Network Classification, and Model Validation.
 
-Dataset:
-- Preprocessed delivery dataset
-- Encoded categorical features
-- Scaled numerical features
+1. **Data Preprocessing**:
+   * All categorical features were label-encoded, and numerical features were normalized using MinMaxScaler.
+   * Geographic distance was considered using the existing "Distance" column.
+   * Time-based features such as `Order_Hour` and `Rush_Hour` were engineered.
 
-Model Architecture:
-- Input: (28, 28, 1)
-- Conv2D(32 filters, 3x3 kernel) + ReLU
-- MaxPooling2D(2x2)
-- Flatten
-- Dense(64) + ReLU
-- Dense(2) + Softmax
+2. **CNN-Based Classification**:
+   * A Convolutional Neural Network (CNN) was used on simulated 2D image data representing delivery routes.
+   * Architecture:
+     * Two Conv2D layers with ReLU activations followed by MaxPooling2D.
+     * A Flatten layer feeding into a dense hidden layer and a softmax output layer.
+   * Training was performed over 10 epochs with the following final validation metrics:
+     * **Accuracy**: 53%
+     * **Precision**: 51% (Class 0), 60% (Class 1)
+     * **Recall**: 86% (Class 0), 21% (Class 1)
+     * **F1 Score**: 64% (Class 0), 31% (Class 1)
 
-Training Configuration:
-- Loss Function: categorical_crossentropy
-- Optimizer: adam
-- Epochs: 5
-- Validation: 5-Fold Cross Validation
+3. **Model Evaluation and Validation**:
+  * K-Fold Cross-Validation (k=5) produced the following fold accuracies:
+     * Fold 1: 54.00%
+     * Fold 2: 51.50%
+     * Fold 3: 46.00%
+     * Fold 4: 59.00%
+     * Fold 5: 55.00%
+     * **Mean Accuracy**: 49.77%
+   * Logistic Regression (as a benchmark model) with GridSearchCV for hyperparameter tuning achieved:
+     * **Best Parameters**: C = 10
+     * **Best Score**: 50.2%
 
-Results:
-| Fold | Accuracy  |
-|------|-----------|
-| 1    |   54.00%  |
-| 2    |   51.50%  |
-| 3    |   46.00%  |
-| 4    |   59.00%  |
-| 5    |   55.00%  |
-| Mean |   49.77%  |
+## Conclusion:
+While CNN demonstrated the capability to learn from spatial patterns, its performance on the simulated data was modest. Traditional logistic regression with tuned parameters offered comparable results. More sophisticated CNN designs or richer features might improve accuracy.
 
-Key Findings:
-- CNN was effective in classifying delivery times based on features.
-- Model validated using 5-fold cross-validation ensures generalizability.
-- Accuracy values indicate how consistently the model performs across different data splits.
+## Insights from Feature Engineering and Modeling
+* Rush hours (7-9 AM, 5-7 PM) were engineered as a binary feature, showing correlation with delayed deliveries.
+* Distance and tip amount showed some variability with delivery time but were not dominant predictors.
+* CNN model performance indicates that spatial representation may help but requires further tuning and real image-based data.
 
-Recommendations:
-- Consider hyperparameter tuning for improved performance.
-- Evaluate model on real images or map-based representations for better spatial analysis.
-- Compare CNN performance with LSTM or traditional ML models on tabular data.
+## Actionable Insights
+Based on the preprocessing, feature engineering, and modeling phases, the following steps are recommended:
+1. Collect real image-based route or traffic data to enhance CNN performance.
+2. Enrich the dataset with weather and traffic severity scores if available.
+3. Consider ensemble methods combining CNN outputs with traditional tabular models.
+4. Use rush hour indicators to optimize delivery windows and reduce delays.
+5. Evaluate additional models (e.g., XGBoost, Random Forest) for potential accuracy improvements.
 
+Overall, while the neural approach is promising, further real-world data and hybrid modeling strategies will yield more actionable results.
