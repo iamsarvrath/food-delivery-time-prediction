@@ -46,4 +46,9 @@ Based on the preprocessing, feature engineering, and modeling phases, the follow
 4. Use rush hour indicators to optimize delivery windows and reduce delays.
 5. Evaluate additional models (e.g., XGBoost, Random Forest) for potential accuracy improvements.
 
-Overall, while the neural approach is promising, further real-world data and hybrid modeling strategies will yield more actionable results.
+Final Summary:
+The analysis of the food delivery dataset using a CNN-based approach revealed modest predictive performance, with a validation accuracy of 53% and F1 scores of 64% 
+(Class 0) and 31% (Class 1). Benchmarking with logistic regression achieved a similar accuracy of 50.2%. Feature engineering highlighted rush hours as a relevant 
+factor influencing delivery delays, while other features like distance and tips showed weaker predictive power. To improve model performance, integrating real-
+world image or traffic data, exploring ensemble models, and testing algorithms like XGBoost are recommended. These enhancements can better capture delivery 
+dynamics and optimize operational efficiency.
