@@ -1,54 +1,98 @@
-Report for Model-v4
+Food Delivery Time Prediction Report – Model-v4
 
-Three primary phases were used to analyze and model the food delivery dataset: Data Preprocessing, CNN-based Neural Network Classification, and Model Validation.
+Summary:
+The CNN-based classification analysis revealed modest predictive capability for delivery time estimation, with the following key performance values:
+- Validation Accuracy: 53%
+- F1 Score: 64% (Class 0), 31% (Class 1)
+- Precision: 51% (Class 0), 60% (Class 1)
+- Recall: 86% (Class 0), 21% (Class 1)
+- Strong Classifier Performance: None (no class exceeded 70% F1-score)
 
-1. Data Preprocessing:
-   * All categorical features were label-encoded, and numerical features were normalized using MinMaxScaler.
-   * Geographic distance was considered using the existing "Distance" column.
-   * Time-based features such as `Order_Hour` and `Rush_Hour` were engineered.
+The strongest class-wise performance was for Class 0 (on-time deliveries), while Class 1 (late deliveries) suffered from lower recall and precision.
+These results indicate the CNN model can detect spatial and temporal patterns to some extent but struggles with late delivery predictions. Model performance may 
+improve with real image-based route data or ensemble methods combining CNN with traditional classifiers.
+The analysis provides a baseline for future improvement rather than final deployment, signaling the need for deeper feature integration and model optimization.
 
-2. CNN-Based Classification:
-   * A Convolutional Neural Network (CNN) was used on simulated 2D image data representing delivery routes.
-   * Architecture:
-     * Two Conv2D layers with ReLU activations followed by MaxPooling2D.
-     * A Flatten layer feeding into a dense hidden layer and a softmax output layer.
-   * Training was performed over 10 epochs with the following final validation metrics:
-     * Accuracy: 53%
-     * Precision: 51% (Class 0), 60% (Class 1)
-     * Recall: 86% (Class 0), 21% (Class 1)
-     * F1 Score: 64% (Class 0), 31% (Class 1)
+Methodology:
+1. Data Preprocessing and Feature Engineering:
+- Dataset Characteristics:
+  - Categorical features were encoded using LabelEncoder.
+  - Numerical features were scaled using MinMaxScaler.
+  - Dataset included features such as Order Time, Distance, and Tip Amount.
+
+- Engineered Features:
+  - Order_Hour extracted from timestamp to capture temporal patterns.
+  - Binary feature Rush_Hour created for 7–9 AM and 5–7 PM windows.
+  - Delivery distance preserved as a key spatial metric.
+
+2. CNN-Based Neural Network Classification:
+- Model Architecture:
+  - 2 Conv2D layers with ReLU activation + MaxPooling
+  - Flatten layer → Dense hidden layer → Softmax output
+  - Training over 10 epochs on synthetic 2D delivery route matrices
+
+- Performance Metrics:
+  - Accuracy: 53%
+  - Precision:
+    - Class 0 (on-time): 51%
+    - Class 1 (late): 60%
+  - Recall:
+    - Class 0: 86%
+    - Class 1: 21%
+  - F1 Score:
+    - Class 0: 64%
+    - Class 1: 31%
 
 3. Model Evaluation and Validation:
-  * K-Fold Cross-Validation (k=5) produced the following fold accuracies:
-     * Fold 1: 54.00%
-     * Fold 2: 51.50%
-     * Fold 3: 46.00%
-     * Fold 4: 59.00%
-     * Fold 5: 55.00%
-     * Mean Accuracy: 49.77%
-   * Logistic Regression (as a benchmark model) with GridSearchCV for hyperparameter tuning achieved:
-     * Best Parameters: C = 10
-     * Best Score: 50.2%
+- K-Fold Cross-Validation (k=5):
+  - Fold 1: 54.00%
+  - Fold 2: 51.50%
+  - Fold 3: 46.00%
+  - Fold 4: 59.00%
+  - Fold 5: 55.00%
+  - Mean Accuracy: 49.77%
 
-## Conclusion:
-While CNN demonstrated the capability to learn from spatial patterns, its performance on the simulated data was modest. Traditional logistic regression with tuned parameters offered comparable results. More sophisticated CNN designs or richer features might improve accuracy.
+- Benchmark Model – Logistic Regression:
+  - Hyperparameter tuning via GridSearchCV
+  - Best Parameters: C = 10
+  - Best Score: 50.2%
 
-## Insights from Feature Engineering and Modeling
-* Rush hours (7-9 AM, 5-7 PM) were engineered as a binary feature, showing correlation with delayed deliveries.
-* Distance and tip amount showed some variability with delivery time but were not dominant predictors.
-* CNN model performance indicates that spatial representation may help but requires further tuning and real image-based data.
+Key Findings:
 
-## Actionable Insights
-Based on the preprocessing, feature engineering, and modeling phases, the following steps are recommended:
-1. Collect real image-based route or traffic data to enhance CNN performance.
-2. Enrich the dataset with weather and traffic severity scores if available.
-3. Consider ensemble methods combining CNN outputs with traditional tabular models.
-4. Use rush hour indicators to optimize delivery windows and reduce delays.
-5. Evaluate additional models (e.g., XGBoost, Random Forest) for potential accuracy improvements.
+1. Strongest Predictive Patterns:
+- CNN performed better on Class 0 (on-time deliveries) due to more consistent patterns in early delivery data.
+- Class 1 predictions (late deliveries) had poor recall, suggesting underfitting or class imbalance.
+
+2. Feature Insights:
+- Rush hour showed consistent correlation with delayed deliveries.
+- Geographic Distance influenced delivery time but lacked strong predictive power.
+- Tip Amount had weak association with target classes.
+
+3. Correlation Insights:
+- Positive correlation: Rush_Hour and delivery delays
+- Weak/no correlation: Tip_Amount, Order_Hour, and delay status
+
+Actionable Recommendations:
+
+1. Model Enhancements:
+- Collect real route or traffic image data to feed CNNs with more realistic spatial patterns.
+- Test ensemble strategies combining CNN outputs with logistic regression or tree-based models.
+- Rebalance training data to improve minority class (late delivery) recall.
+
+2. Feature Enrichment:
+- Add weather data, traffic congestion levels, and live road events.
+- Include restaurant workload and rider availability to reflect operational variables.
+
+3. Operational Improvements:
+- Use rush hour flags to adjust staffing and optimize order batching.
+- Predict delivery bottlenecks early using probabilistic thresholds from CNN output.
+- Create alert systems for high-risk delivery windows.
 
 Final Summary:
-The analysis of the food delivery dataset using a CNN-based approach revealed modest predictive performance, with a validation accuracy of 53% and F1 scores of 64% 
-(Class 0) and 31% (Class 1). Benchmarking with logistic regression achieved a similar accuracy of 50.2%. Feature engineering highlighted rush hours as a relevant 
-factor influencing delivery delays, while other features like distance and tips showed weaker predictive power. To improve model performance, integrating real-
-world image or traffic data, exploring ensemble models, and testing algorithms like XGBoost are recommended. These enhancements can better capture delivery 
-dynamics and optimize operational efficiency.
+The CNN-based classification model for delivery time prediction achieved a validation accuracy of 53%, with clear strength in identifying on-time deliveries (F1:
+64%) but poor performance in late delivery detection (F1: 31%). Cross-validation showed modest performance stability, with mean accuracy at 49.77%. Logistic
+regression performed similarly, achieving a best score of 50.2% with tuned parameters.
+
+Feature engineering revealed Rush_Hour as a meaningful feature influencing delivery time, while other features showed limited predictive utility. To boost model 
+performance, richer spatial and temporal data, integration of external traffic/weather information, and hybrid model designs (CNN + traditional ML) are \
+recommended. These improvements will enhance the predictive power and enable better optimization of delivery operations.
